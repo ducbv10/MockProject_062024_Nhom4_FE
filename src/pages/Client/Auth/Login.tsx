@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Form } from "antd";
-// import Logo from './assets/images/logo.png';
+// import Logo from '@/assets/images/';
 
 const LoginForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
