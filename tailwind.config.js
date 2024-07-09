@@ -4,6 +4,11 @@ export const content = [
   './src/**/*.{js,ts,jsx,tsx,css}',
 ];
 export const theme = {
-  extend: {},
+  extend: {
+    colors:{
+      mainBgColor:'#B41712',
+      mainBgHoverColor:'#FF645F', 
+    }
+  },
 };
 export const plugins = [];
