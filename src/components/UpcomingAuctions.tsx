@@ -86,7 +86,7 @@ function UpcomingAuctions() {
                     />
                 ))}
             </div>
-            <Link to={""} className="flex items-center justify-center">
+            <Link to={""} className="flex items-center justify-center m-3">
                 <p className="text-mainBgColor font-bold text-[24px]">View All</p>
                 <PiArrowRightFill className="text-mainBgColor size-8" />
             </Link>
