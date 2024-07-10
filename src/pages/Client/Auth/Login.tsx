@@ -1,9 +1,6 @@
-
-
   import React from "react";
   import {  Form } from "antd";
   // import Logo from './assets/images/logo.png';
-
 
   const LoginForm = () => {
     return (
