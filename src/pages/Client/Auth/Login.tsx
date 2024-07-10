@@ -1,36 +1,17 @@
-import React, { useState } from "react";
-import { Modal, Form } from "antd";
-// import Logo from '@/assets/images/';
 
-const LoginForm = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  import React from "react";
+  import {  Form } from "antd";
+  // import Logo from './assets/images/logo.png';
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
-  return (
-    <div>
-      <button
-        onClick={showModal}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Open Modal
-      </button>
-      <Modal
-        open={isModalOpen}
-        onCancel={handleCancel}
-        footer={null}
-        className="modal-responsive"
-      >
+  const LoginForm = () => {
+    return (
+      <div>
         <Form className="flex flex-col mt-5 space-y-5 p-4 md:p-6 lg:p-8">
           <div className="flex flex-col md:flex-row justify-center items-center space-y-3 md:space-y-0 md:space-x-3">
             <div className="bg-[#B7201B] w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px]">
-              {/* <img src={Logo} alt="" className="font-bold" /> */}
+              <img src={"Logo"} alt="" className="font-bold" />
             </div>
             <div className="text-center">
               <p className="font-bold text-[18px] md:text-[20px] lg:text-[24px] text-[#B7201B]">
@@ -91,9 +72,8 @@ const LoginForm = () => {
             </button>
           </div>
         </Form>
-      </Modal>
-    </div>
-  );
-};
+      </div>
+    );
+  };
 
-export default LoginForm;
+  export default LoginForm;
