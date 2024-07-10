@@ -9,24 +9,22 @@ import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
 
 const Home = () => {
-
-
-
     return (
         <div>
-            <Header/>
-            <UserNavbar />
+            <Header />
+            <div className="my-4">
+                <UserNavbar />
+            </div>
             <Banner />
+            <div className="m-12">
+                <AuctionedProducts />
+            </div>
             <div className="m-4">
                 <UpcomingAuctions />
             </div>
 
             <div className="m-12">
-                <AuctionedProducts/>
-            </div>
-
-            <div className="m-12">
-                <CurrentAuctionPro/>
+                <CurrentAuctionPro />
             </div>
 
             <div className="mt-4">

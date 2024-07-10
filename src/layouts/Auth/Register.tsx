@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./register.css";
+import { useState } from "react";
 import { Button, Col, Form, Input, Row, Select } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 const { Option } = Select;
 
 // const formItemLayout = {
@@ -34,8 +34,10 @@ const closerIcon = './src/assets/images/closerIcon.png'
 function Register() {
   const [form] = Form.useForm();
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
   const handleClose = () => {
     setIsOpen(false);
+    navigate('/');
     // Xử lý hành động đóng modal ở đây (nếu cần)
   };
   const onFinish = (values: any) => {
@@ -45,8 +47,8 @@ function Register() {
   return (
     <>
       {isOpen && (
-        <div className="flex flex-col items-center ms:w-screen min-h-screen md:w-full bg-black bg-opacity-90 z-0">
-          <div className="w-full max-w-2xl lg:max-w-[760px] lg:w-full  md:max-h-max md:mx-4 md:max-w-[800px] md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-white lg:rounded-2xl md:rounded-2xl sm:rounded-none shadow-sm">
+        <div className="flex flex-col items-center ms:w-screen min-h-screen md:w-full bg-white bg-opacity-90 z-0 ">
+          <div className="w-full max-w-2xl lg:max-w-[760px] lg:w-full  md:max-h-max md:mx-4 md:max-w-[800px] md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-gray-50 lg:rounded-2xl md:rounded-2xl sm:rounded-none shadow-lg">
             <div className="px-4 py-2 md:w-full">
               <div className=" h-fit flex flex-row-reverse">
                 <button onClick={handleClose} className="w-[45px] h-auto">
@@ -65,9 +67,9 @@ function Register() {
                 </div>
                 <p className="text-center xl:text-xl lg:text-lg  mt-5 mb-5 sm:text-lg">
                   Do already have an account?{" "}
-                  <a className="font-bold hover:cursor-pointer hover:opacity-50 ">
+                  <Link to={"/signin"} className="font-bold hover:cursor-pointer hover:opacity-50 ">
                     Login now
-                  </a>
+                  </Link>
                 </p>
               </header>
               <body className="flex w-full">
