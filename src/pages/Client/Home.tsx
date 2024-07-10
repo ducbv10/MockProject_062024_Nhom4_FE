@@ -1,9 +1,19 @@
-import ForgetPass from "../../components/Form/login/ForgetPass";
-function Home() {
+import UpcomingAuctions from "@/components/UpcomingAuctions";
+import Banner from "../../components/Banner";
+import UserNavbar from "../../components/Navbar";
+import Footer from "../../layouts/Client/FooterClient";
+import Header from "@/layouts/Client/HeaderClient";
+
+const Home = () => {
     return (
         <div>
-            <h1>Home Hello world</h1>
-            <ForgetPass/>
+            <Header/>
+            <UserNavbar />
+            <Banner />
+            <div className="m-4">
+                <UpcomingAuctions />
+            </div>
+            <Footer />
         </div>
     )
 }
