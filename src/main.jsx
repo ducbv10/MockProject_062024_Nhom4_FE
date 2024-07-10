@@ -1,61 +1,113 @@
 import * as ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { HOME_PATH, INTRO_PATH, PROFILE_PATH, SIGNIN_PATH, SIGNUP_PATH } from './constants/Routes';
+import { ADMIN_PATH, ADMIN_APPRAISER_PATH, ADMIN_USERS_PATH, HOME_PATH, SIGNUP_PATH, SIGNIN_PATH, PROFILE_PATH, INTRODUCTION, NEWS, CONTACT, STAFF_PATH, STAFF_USER_PATH, STAFF_CATEGORY_PATH, STAFF_NEW_PATH, STAFF_WAREHOUSE_PATH, STAFF_AUCTION_PATH, STAFF_PRODUCT_PATH, STAFF_REQUEST_PATH } from './constants/Routes';
 import Home from './pages/Client/Home';
-import './styles/main.css';
-import { Header } from 'antd/es/layout/layout';
+// import Profile from './pages/Client/Profile';
+// import Introduction from './pages/Client/Introduction';
+// import News from './pages/Client/News';
+// import Contact from './pages/Client/Contact';
+// import StaffLayout from './layouts/Staff/StaffLayout';
+// import StaffUsers from './pages/Staff/Users';
+// import StaffCategories from './pages/Staff/Categories';
+// import StaffNews from './pages/Staff/News';
+// import StaffWarehouse from './pages/Staff/Warehouse';
+// import StaffAuction from './pages/Staff/Auction';
+// import StaffProducts from './pages/Staff/Products';
+// import StaffRequests from './pages/Staff/Requests';
+import Register from "./layouts/Auth/Register.tsx"
+import AuthLayout from "./layouts/Auth/AuthLayout.tsx";
+// import AdminLayout from "./layouts/Admin/AdminLayout.tsx";
+// import AdminUsers from "./pages/Admin/Users";
+// import AdminAppraiser from "./pages/Admin/Appraiser";
+// import ErrorPage from "./pages/Error/ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: INTRO_PATH,
+    path: HOME_PATH,
     element: <Home />,
     errorElement: "<ErrorPage />",
   },
   {
-    path: '/',
-    element: "<SignIn_SignUpLayout />",
-    children: [
-      {
-        path: SIGNIN_PATH,
-        element: "<SignIn />",
-      },
-      {
-        path: SIGNUP_PATH,
-        element: "<SignUp />",
-      },
-    ],
+    path: PROFILE_PATH,
+    element: "<Profile />",
   },
   {
-    path: '/',
-    element: (
-      <Header />
-    ),
+    path: INTRODUCTION,
+    element: "<Introduction />",
+  },
+  {
+    path: NEWS,
+    element: "<News />",
+  },
+  {
+    path: CONTACT,
+    element: "<Contact />",
+  },
+  {
+    path: SIGNIN_PATH,
+    element: <AuthLayout />,
+  },
+  {
+    path: SIGNUP_PATH,
+    element: <Register />,
+  },
+  {
+    path: ADMIN_PATH,
+    element: "<AdminLayout />",
     children: [
       {
-        path: HOME_PATH,
-        element: <Home />,
+        path: ADMIN_USERS_PATH,
+        element: "<AdminUsers />",
       },
       {
-        path: `${PROFILE_PATH}/:userId`,
-        element: (
-            "<Profile />"
-        ),
-        children: [
-          {
-            path: '',
-            element: "<BottomProfile />",
-          },
-        ],
+        path: ADMIN_APPRAISER_PATH,
+        element: "<AdminAppraiser />",
       },
-    ]
-  }
+    ],
+    errorElement: "<ErrorPage />",
+  },
+  {
+    path: STAFF_PATH,
+    element: "<StaffLayout />",
+    children: [
+      {
+        path: STAFF_USER_PATH,
+        element: "<StaffUsers />",
+      },
+      {
+        path: STAFF_CATEGORY_PATH,
+        element: "<StaffCategories />",
+      },
+      {
+        path: STAFF_NEW_PATH,
+        element:" <StaffNews />",
+      },
+      {
+        path: STAFF_WAREHOUSE_PATH,
+        element: "<StaffWarehouse />,"
+      },
+      {
+        path: STAFF_AUCTION_PATH,
+        element:" <StaffAuction />,"
+      },
+      {
+        path: STAFF_PRODUCT_PATH,
+        element: "<StaffProducts />,"
+      },
+      {
+        path: STAFF_REQUEST_PATH,
+        element: "<StaffRequests />,"
+      },
+    ],
+    errorElement: "<ErrorPage />,"
+  },
 ]);
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>,
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>,
 )

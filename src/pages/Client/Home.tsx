@@ -8,8 +8,10 @@ import Header from "@/layouts/Client/HeaderClient";
 const Home = () => {
     return (
         <div>
-            <Header/>
-            <UserNavbar />
+            <Header />
+            <div className="my-4">
+                <UserNavbar />
+            </div>
             <Banner />
             <div className="m-4">
                 <UpcomingAuctions />
