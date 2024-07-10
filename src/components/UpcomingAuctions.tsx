@@ -1,5 +1,7 @@
 import { ImHammer2 } from "react-icons/im";
 import AuctionItem from "./AuctionItem";
+import { PiArrowRightFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 const auctionImg = './src/assets/images/auctionItem.png';
 
 function UpcomingAuctions() {
@@ -66,8 +68,8 @@ function UpcomingAuctions() {
     return (
         <div className="mx-20">
             <center>
-                <p className="text-mainBgColor font-bold text-[14px]">Upcoming auctions</p>
-                <div className="flex justify-center gap-5 m-6">
+                <p className="text-mainBgColor font-bold text-[36px]">Upcoming auctions</p>
+                <div className="flex justify-center gap-5 m-2">
                     <hr className='bg-gray-600 w-32 h-1 rounded-sm mt-3' />
                     <ImHammer2 size={32} className="text-mainBgColor" />
                     <hr className='bg-gray-600 w-32 h-1 rounded-sm mt-3' />
@@ -84,6 +86,10 @@ function UpcomingAuctions() {
                     />
                 ))}
             </div>
+            <Link to={""} className="flex items-center justify-center">
+                <p className="text-mainBgColor font-bold text-[24px]">View All</p>
+                <PiArrowRightFill className="text-mainBgColor size-8" />
+            </Link>
         </div>
     )
 }
