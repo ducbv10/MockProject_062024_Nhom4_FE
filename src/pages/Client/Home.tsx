@@ -2,6 +2,7 @@ import UpcomingAuctions from "@/components/UpcomingAuctions";
 import Banner from "../../components/Banner";
 import UserNavbar from "../../components/Navbar";
 import Footer from "../../layouts/Client/FooterClient";
+import SuccessAuctionedProducts from "@/components/SuccessAuctionedProducts";
 import Header from "@/layouts/Client/HeaderClient";
 import CarouselPros from "@/components/HomePage/CarouselPros";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
@@ -26,6 +27,10 @@ const Home = () => {
 
             <div className="m-12">
                 <CurrentAuctionPro/>
+            </div>
+
+            <div className="mt-4">
+                <SuccessAuctionedProducts />
             </div>
 
             <Footer />
