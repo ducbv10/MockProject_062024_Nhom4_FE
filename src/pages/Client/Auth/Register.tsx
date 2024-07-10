@@ -16,7 +16,15 @@ const tailFormItemLayout = {
   wrapperCol: {
     xs: {
       span: 24,
-      offset: 0,
+      offset: 16,
+    },
+    lg: {
+      span: 16,
+      offset: 4,
+    },
+    md: {
+      span: 16,
+      offset: 4,
     },
   },
 };
@@ -26,9 +34,9 @@ const closerIcon = './src/assets/images/closerIcon.png'
 function Register() {
   const [form] = Form.useForm();
   const [isOpen, setIsOpen] = useState(true);
-
   const handleClose = () => {
-    setIsOpen(false); 
+    setIsOpen(false);
+    // Xử lý hành động đóng modal ở đây (nếu cần)
   };
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
@@ -37,23 +45,25 @@ function Register() {
   return (
     <>
       {isOpen && (
-        <div className="flex flex-col items-center ms:w-screen min-h-screen bg-black bg-opacity-90 z-0">
-          <div className="w-full max-w-2xl lg:max-w-max md:max-h-max md:mx-4 md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-white rounded-2xl shadow-sm">
-            <div className="px-4 py-2">
+        <div className="flex flex-col items-center ms:w-screen min-h-screen md:w-full bg-black bg-opacity-90 z-0">
+          <div className="w-full max-w-2xl lg:max-w-[760px] lg:w-full  md:max-h-max md:mx-4 md:max-w-[800px] md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-white lg:rounded-2xl md:rounded-2xl sm:rounded-none shadow-sm">
+            <div className="px-4 py-2 md:w-full">
               <div className=" h-fit flex flex-row-reverse">
-                <button onClick={handleClose}>
+                <button onClick={handleClose} className="w-[45px] h-auto">
+                  <span className="block w-full h-full m-1 p-2 hover:cursor-pointer hover:opacity-85 sm:active:opacity-30 ">
                   <img
-                    className="w-8 h-8 m-1 hover:cursor-pointer hover:opacity-85 sm:active:opacity-30 "
+                    className="w-fit h-fit object-cover"
                     src={closerIcon}
                     alt="close"
                   />
+                  </span>
                 </button>
               </div>
               <header className="flex flex-col items-center w-full">
                 <div className="w-4/12">
                   <img className="w-fit" src={logoRegister} alt="logo" />
                 </div>
-                <p className="text-center text-xl mt-5 mb-5">
+                <p className="text-center xl:text-xl lg:text-lg  mt-5 mb-5 sm:text-lg">
                   Do already have an account?{" "}
                   <a className="font-bold hover:cursor-pointer hover:opacity-50 ">
                     Login now
@@ -67,12 +77,12 @@ function Register() {
                   name="register"
                   className="lg:justify-center"
                   onFinish={onFinish}
-                  style={{ maxWidth: "100%", maxHeight: "100%" }}
+                  style={{ maxWidth: "800px", width:"100%",maxHeight: "100%" }}
                   scrollToFirstError
                 >
-                  <Row gutter={16}>
+                  <Row gutter={16} className="flex flex-wrap">
                     {/* Email */}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12} >
                       <Form.Item
                         name="email"
                         label="Username/Email"
@@ -93,10 +103,11 @@ function Register() {
                       </Form.Item>
                     </Col>
                     {/* Firstname */}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12} >
                       <Form.Item
                         name="firstname"
                         label="Firstname"
+                        // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
@@ -111,10 +122,11 @@ function Register() {
                       </Form.Item>
                     </Col>
                     {/* Address */}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="address"
                         label="Address"
+                        // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
@@ -128,15 +140,12 @@ function Register() {
                         <Input placeholder="Address" />
                       </Form.Item>
                     </Col>
-                  </Row>
-
-                  {/*row 2*/}
-                  <Row gutter={16}>
                     {/* Country  row 2*/}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="country"
                         label="Country"
+                        // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
@@ -151,7 +160,7 @@ function Register() {
                       </Form.Item>
                     </Col>
                     {/* State/Province  row 2*/}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="State/Province"
                         label="State/Province"
@@ -169,7 +178,7 @@ function Register() {
                       </Form.Item>
                     </Col>
                     {/* City row 2*/}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="City"
                         label="City"
@@ -186,12 +195,8 @@ function Register() {
                         <Input placeholder="City" />
                       </Form.Item>
                     </Col>
-                  </Row>
 
-                  {/*  row3 */}
-                  <Row gutter={16}>
-                    {/* Bank name row3 */}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="bankname"
                         label="Bank Name"
@@ -213,7 +218,7 @@ function Register() {
                     </Col>
 
                     {/* Banknumber row 3*/}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="banknumber"
                         label="Bank Number"
@@ -238,7 +243,7 @@ function Register() {
                     </Col>
 
                     {/* Bankbranch row 3*/}
-                    <Col span={8}>
+                    <Col lg={8} xs={24} md={12}>
                       <Form.Item
                         name="bankbranch"
                         label="Bank Branch"
@@ -258,12 +263,8 @@ function Register() {
                         </Select>
                       </Form.Item>
                     </Col>
-                  </Row>
 
-                  {/* Row 4 */}
-                  <Row gutter={16}>
-                    {/* Password  */}
-                    <Col span={12}>
+                    <Col lg={12} xs={24} md={12}>
                       <Form.Item
                         name="password"
                         label="Password"
@@ -281,7 +282,7 @@ function Register() {
                       </Form.Item>
                     </Col>
                     {/* Confirm Password */}
-                    <Col span={12}>
+                    <Col lg={12} xs={24} md={12}>
                       <Form.Item
                         name="confirm"
                         label="Confirm Password"
@@ -315,10 +316,9 @@ function Register() {
                       </Form.Item>
                     </Col>
                   </Row>
-                  {/* Register */}
+                  <Col>
                   <Form.Item
                     {...tailFormItemLayout}
-                    wrapperCol={{ span: 12, offset: 6 }}
                   >
                     <Button
                       type="primary"
@@ -328,6 +328,8 @@ function Register() {
                       Register
                     </Button>
                   </Form.Item>
+                  </Col>
+                 
                 </Form>
               </body>
             </div>
