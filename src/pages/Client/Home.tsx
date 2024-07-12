@@ -7,8 +7,6 @@ import Header from "@/layouts/Client/HeaderClient";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
 
-import SellerPersonalProfile from "./PersonalProfile/Seller";
-
 const Home = () => {
   return (
     <div>
@@ -16,22 +14,21 @@ const Home = () => {
       <div className="my-4">
         <UserNavbar />
       </div>
-      {/* <Banner />
-            <div className="m-12">
-                <AuctionedProducts />
-            </div>
-            <div className="m-4">
-                <UpcomingAuctions />
-            </div>
+      <Banner />
+      <div className="m-12">
+        <AuctionedProducts />
+      </div>
+      <div className="m-4">
+        <UpcomingAuctions />
+      </div>
 
-            <div className="m-12">
-                <CurrentAuctionPro />
-            </div>
+      <div className="m-12">
+        <CurrentAuctionPro />
+      </div>
 
-            <div className="mt-4">
-                <SuccessAuctionedProducts />
-            </div> */}
-      <SellerPersonalProfile />
+      <div className="mt-4">
+        <SuccessAuctionedProducts />
+      </div>
       <Footer />
     </div>
   )
