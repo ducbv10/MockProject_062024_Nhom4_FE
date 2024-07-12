@@ -4,18 +4,19 @@ import UserNavbar from "../../components/Navbar";
 import Footer from "../../layouts/Client/FooterClient";
 import SuccessAuctionedProducts from "@/components/SuccessAuctionedProducts";
 import Header from "@/layouts/Client/HeaderClient";
-import CarouselPros from "@/components/HomePage/CarouselPros";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
 
+import SellerPersonalProfile from "./PersonalProfile/Seller";
+
 const Home = () => {
-    return (
-        <div>
-            <Header />
-            <div className="my-4">
-                <UserNavbar />
-            </div>
-            <Banner />
+  return (
+    <div>
+      <Header />
+      <div className="my-4">
+        <UserNavbar />
+      </div>
+      {/* <Banner />
             <div className="m-12">
                 <AuctionedProducts />
             </div>
@@ -29,11 +30,11 @@ const Home = () => {
 
             <div className="mt-4">
                 <SuccessAuctionedProducts />
-            </div>
-
-            <Footer />
-        </div>
-    )
+            </div> */}
+      <SellerPersonalProfile />
+      <Footer />
+    </div>
+  )
 }
 
 export default Home;
