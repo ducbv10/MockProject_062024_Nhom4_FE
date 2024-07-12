@@ -17,7 +17,7 @@ import Home from './pages/Client/Home';
 // import StaffRequests from './pages/Staff/Requests';
 import Register from "./layouts/Auth/Register.tsx"
 import AuthLayout from "./layouts/Auth/AuthLayout.tsx";
-// import AdminLayout from "./layouts/Admin/AdminLayout.tsx";
+import AdminPage from "./pages/Admin";
 // import AdminUsers from "./pages/Admin/Users";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
   },
   {
     path: ADMIN_PATH,
-    element: "<AdminLayout />",
+    element: <AdminPage />,
     children: [
       {
         path: ADMIN_USERS_PATH,
