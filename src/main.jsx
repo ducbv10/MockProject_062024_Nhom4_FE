@@ -21,6 +21,7 @@ import AuthLayout from "./layouts/Auth/AuthLayout.tsx";
 // import AdminUsers from "./pages/Admin/Users";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
+import PersonalProfile from "./pages/Client/PersonalProfile";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: PROFILE_PATH,
-    element: "<Profile />",
+    element: <PersonalProfile />,
   },
   {
     path: INTRODUCTION,
