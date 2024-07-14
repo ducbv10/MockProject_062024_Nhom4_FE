@@ -1,7 +1,7 @@
 import * as ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ADMIN_PATH, ADMIN_APPRAISER_PATH, ADMIN_USERS_PATH, HOME_PATH, SIGNUP_PATH, SIGNIN_PATH, PROFILE_PATH, INTRODUCTION, NEWS, CONTACT, STAFF_PATH, STAFF_USER_PATH, STAFF_CATEGORY_PATH, STAFF_NEW_PATH, STAFF_WAREHOUSE_PATH, STAFF_AUCTION_PATH, STAFF_PRODUCT_PATH, STAFF_REQUEST_PATH } from './constants/Routes';
+import { ADMIN_PATH, ADMIN_APPRAISER_PATH, ADMIN_USERS_PATH, HOME_PATH, SIGNUP_PATH, SIGNIN_PATH, PROFILE_PATH, INTRODUCTION, NEWS, CONTACT, STAFF_PATH, STAFF_USER_PATH, STAFF_CATEGORY_PATH, STAFF_NEW_PATH, STAFF_WAREHOUSE_PATH, STAFF_AUCTION_PATH, STAFF_PRODUCT_PATH, STAFF_REQUEST_PATH, ADMIN_PERSONAL_INFOR_PATH} from './constants/Routes';
 import Home from './pages/Client/Home';
 // import Profile from './pages/Client/Profile';
 // import Introduction from './pages/Client/Introduction';
@@ -22,6 +22,7 @@ import AdminPage from "./pages/Admin";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
 import PersonalProfile from "./pages/Client/PersonalProfile";
+
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
     element: <AdminPage />,
     children: [
       {
+        path: ADMIN_PERSONAL_INFOR_PATH,
+        element: <AdminPage />
+      },
+
+      {
         path: ADMIN_USERS_PATH,
         element: "<AdminUsers />",
       },
@@ -65,6 +71,7 @@ const router = createBrowserRouter([
         path: ADMIN_APPRAISER_PATH,
         element: "<AdminAppraiser />",
       },
+      
     ],
     errorElement: "<ErrorPage />",
   },
