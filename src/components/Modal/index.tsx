@@ -13,7 +13,6 @@ const AppModal: React.FC<AppModalProps> = ({ trigger, children, ...rest }) => {
     <div>
       <button
         onClick={() => {
-          console.log(123);
           setOpen(!open);
         }}
       >
@@ -28,7 +27,6 @@ const AppModal: React.FC<AppModalProps> = ({ trigger, children, ...rest }) => {
           setOpen(false);
         }}
         cancelText={"Đóng"}
-        okButtonProps={{ style: { display: "none" } }}
         {...rest}
       >
         {children}
