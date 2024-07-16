@@ -2,6 +2,7 @@ export const ADMIN_PATH = '/admin';
 export const ADMIN_USERS_PATH = 'users';
 export const ADMIN_APPRAISER_PATH = 'appraiser';
 export const ADMIN_PERSONAL_INFOR_PATH = 'personal'
+export const ADMIN_USER_PATH = 'manager-user'
 
 export const STAFF_PATH = '/staff';
 export const STAFF_USER_PATH = 'user';
