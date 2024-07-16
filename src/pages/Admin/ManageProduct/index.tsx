@@ -1,6 +1,5 @@
 import { Product } from "@/types/Product";
 import { Table, TableProps } from "antd";
-import { useEffect, useState } from "react";
 import columns from "./columns";
 import AppModal from "@/components/Modal";
 import CreateEditProduct from "./CreateEditProduct";
@@ -58,7 +57,7 @@ const ManageProduct: React.FC = () => {
   return (
     <div className="space-y-10">
       <div className="flex flex-row justify-between">
-        <h1>Product</h1>
+        <h1 className="text-[20px] font-bold">Product</h1>
         <AppModal
           width={1000}
           trigger={

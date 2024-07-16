@@ -2,7 +2,7 @@ import HeaderAdmin from "@/layouts/Admin/HeaderAdmin";
 import SidebarAdmin from "@/layouts/Admin/SideBarAdmin";
 import FooterAdmin from "@/layouts/Admin/FooterAdmin";
 
-import ManageProduct from "./ManageProduct";
+import ManageAuction from "./ManageAuction";
 const AdminPage = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const AdminPage = () => {
           <SidebarAdmin />
         </div>
         <div className="w-5/6 mr-[50px]">
-          <ManageProduct />
+          <ManageAuction />
         </div>
       </div>
       <FooterAdmin />
