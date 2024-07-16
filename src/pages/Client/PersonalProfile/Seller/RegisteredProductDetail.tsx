@@ -16,7 +16,7 @@ const getBase64 = (file: FileType): Promise<string> =>
 const RegisteredProductDetail = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
-  const [cbSaledBid, setcbSaledBid] = useState(false);
+  const [cbSaleBid, setCbSaleBid] = useState(false);
   const [cbOnline, setCbOnline] = useState(false);
 
   const [productImageList, setProductImageList] = useState<UploadFile[]>([]);
@@ -120,22 +120,22 @@ const RegisteredProductDetail = () => {
       </div>
       <div className='flex flex-col md:flex-row justify-start space-y-2 md:space-y-0 md:space-x-20'>
         <Radio onClick={() => { 
-          if (cbSaledBid === true) {
-            setcbSaledBid(false);
+          if (cbSaleBid === true) {
+            setCbSaleBid(false);
             setCbOnline(false);
           } else {
-            setcbSaledBid(true);
+            setCbSaleBid(true);
             setCbOnline(false);
           }
         }}
-          checked={cbSaledBid}
+          checked={cbSaleBid}
         >Sealed-bid auction item</Radio>
         <Radio onClick={() => { 
           if (cbOnline === true) {
-            setcbSaledBid(false);
+            setCbSaleBid(false);
             setCbOnline(false);
           } else {
-            setcbSaledBid(false);
+            setCbSaleBid(false);
             setCbOnline(true);
           }
         }}

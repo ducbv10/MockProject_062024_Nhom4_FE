@@ -1,8 +1,7 @@
 import { Form } from "antd";
 import { useState } from 'react';
-import { Appraiser } from "@/types/Appraiser";
 
-function CreateEditApprais() {
+function CreateEditAppraiser() {
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
 
@@ -35,4 +34,4 @@ function CreateEditApprais() {
     );
 }
 
-export default CreateEditApprais;
+export default CreateEditAppraiser;

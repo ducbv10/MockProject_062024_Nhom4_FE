@@ -2,6 +2,7 @@ import { TableColumnsType } from "antd";
 import { Product } from "@/types/Product";
 import AppModal from "@/components/Modal";
 import CreateEditProduct from "./CreateEditProduct";
+import DeleteProduct from "./DeleteProduct";
 import { IoTrash } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 
@@ -42,8 +43,8 @@ const columns: TableColumnsType<Product> = [
     align: "center",
     render: (value) => (
       <div className={`
-      ${value === 'Appoved' ? ("bg-[#A8C485] px-5 py-2 rounded-[10px]") :
-          value === "Not Appoved" ? ("bg-[#F37E8C] px-5 py-2 rounded-[10px]") :
+      ${value === 'Approved' ? ("bg-[#A8C485] px-5 py-2 rounded-[10px]") :
+          value === "Not Approved" ? ("bg-[#F37E8C] px-5 py-2 rounded-[10px]") :
             value === "Successful" ? ("bg-[#E2AE7D] px-5 py-2 rounded-[10px]") :
               value === "Unsuccessful" ? ("bg-[#F4DCDB]] px-5 py-2 rounded-[10px]") : ""
         }
@@ -72,11 +73,13 @@ const columns: TableColumnsType<Product> = [
           <CreateEditProduct />
         </AppModal>
         <AppModal
+          onOk={() => { alert('function delete Product') }}
+          width={1000}
           trigger={
             <button className="bg-[#FF0000] p-2 rounded-[5px] text-white text-[18px] font-bold"><IoTrash /></button>
           }
         >
-          <div>Bạn có chắc muốn xóa đối tượng này không ?</div>
+          <DeleteProduct />
         </AppModal>
       </div>
     )
