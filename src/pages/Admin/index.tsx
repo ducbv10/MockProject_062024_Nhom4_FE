@@ -3,6 +3,7 @@ import SidebarAdmin from "@/layouts/Admin/SideBarAdmin";
 import FooterAdmin from "@/layouts/Admin/FooterAdmin";
 
 import ManageAuction from "./ManageAuction";
+import ManageNews from "./ManageNews";
 const AdminPage = () => {
   return (
     <div>
@@ -12,7 +13,8 @@ const AdminPage = () => {
           <SidebarAdmin />
         </div>
         <div className="w-5/6 mr-[50px]">
-          <ManageAuction />
+          {/* <ManageAuction /> */}
+          <ManageNews/>
         </div>
       </div>
       <FooterAdmin />
