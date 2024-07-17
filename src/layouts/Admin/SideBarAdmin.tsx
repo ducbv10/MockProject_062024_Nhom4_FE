@@ -42,7 +42,7 @@ function SidebarAdmin() {
   const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
     switch (key) {
       case '1':
-        navigate('/manager-list-user')
+        navigate('manager-list-user')
         break;
       case '2':
         navigate('/manager-category')
