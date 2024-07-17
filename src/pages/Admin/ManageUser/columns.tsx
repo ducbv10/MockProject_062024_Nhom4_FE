@@ -25,7 +25,9 @@ const columns = [
         title: 'ROLE',
         dataIndex: 'role',
         key: 'role',
+
         render: ({...dataIndex}) => ( 
+
                 <Select defaultValue={dataIndex.role} style={{width:100}}>
                     <Select.Option value ='Admin'>Admin</Select.Option>
                     <Select.Option value='Staff'>Staff</Select.Option>
@@ -39,7 +41,9 @@ const columns = [
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
+
       render: ({...dataIndex}) => ( 
+
             <Select defaultValue={dataIndex.status} style={{width:90}}>
                 <Select.Option value ='Active'>Active</Select.Option>
                 <Select.Option value='Inactive'>Inactive</Select.Option>
