@@ -1,9 +1,11 @@
 import HeaderAdmin from "@/layouts/Admin/HeaderAdmin";
 import SidebarAdmin from "@/layouts/Admin/SideBarAdmin";
 import FooterAdmin from "@/layouts/Admin/FooterAdmin";
-
 import ManageProduct from "./ManageProduct";
 
+
+
+import ManageListUser from "./ManageUser";
 const AdminPage = () => {
   return (
     <div>
