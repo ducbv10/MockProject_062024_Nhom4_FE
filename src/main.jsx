@@ -1,3 +1,4 @@
+import './styles/main.css';
 import * as ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -23,7 +24,7 @@ import AdminPage from "./pages/Admin";
 // import ErrorPage from "./pages/Error/ErrorPage";
 import PersonalProfile from "./pages/Client/PersonalProfile";
 import ManageUser from "./pages/Admin/ManageUser"
-
+import SecretAuction from './pages/Client/SecretAuction/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: CONTACT,
-    element: "<Contact />",
+    element: <SecretAuction/>,
   },
   {
     path: SIGNIN_PATH,
