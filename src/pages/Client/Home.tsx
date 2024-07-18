@@ -6,6 +6,7 @@ import SuccessAuctionedProducts from "@/components/SuccessAuctionedProducts";
 import Header from "@/layouts/Client/HeaderClient";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
+import DetailAuctionOnline from "./DetailAuctionOnline";
 
 const Home = () => {
   return (
@@ -14,7 +15,7 @@ const Home = () => {
       <div className="my-4">
         <UserNavbar />
       </div>
-      <Banner />
+      {/* <Banner />
       <div className="m-12">
         <AuctionedProducts />
       </div>
@@ -28,6 +29,9 @@ const Home = () => {
 
       <div className="mt-4">
         <SuccessAuctionedProducts />
+      </div> */}
+      <div className="mx-14">
+      <DetailAuctionOnline/>
       </div>
       <Footer />
     </div>
