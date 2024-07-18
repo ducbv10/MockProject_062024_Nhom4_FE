@@ -6,7 +6,7 @@ import DeleteProduct from "./DeleteProduct";
 import { IoTrash } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 
-const columns: TableColumnsType<Product> = [
+const columns = (handleEditClick: (appraiser: Product) => void): TableColumnsType<Product> => [
   {
     title: "ID",
     dataIndex: "id",
@@ -21,7 +21,7 @@ const columns: TableColumnsType<Product> = [
   },
   {
     title: "Product Detail",
-    dataIndex: "productDetail",
+    dataIndex: "description",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
@@ -39,7 +39,7 @@ const columns: TableColumnsType<Product> = [
   },
   {
     title: "Status",
-    dataIndex: "startingPrice",
+    dataIndex: "status",
     align: "center",
     render: (value) => (
       <div className={`
@@ -61,16 +61,18 @@ const columns: TableColumnsType<Product> = [
     title: "Action",
     dataIndex: "",
     align: "center",
-    render: () => (
+    render: (_, record) => (
       <div className="flex flex-row justify-center space-x-5">
         <AppModal
           width={1000}
           onOk={() => { alert('function add and create Product') }}
           trigger={
-            <button className="bg-[#3DBF00] p-2 rounded-[5px] text-white text-[18px] font-bold"><FaEdit /></button>
+            <button
+              onClick={() => handleEditClick}
+              className="bg-[#3DBF00] p-2 rounded-[5px] text-white text-[18px] font-bold"><FaEdit /></button>
           }
         >
-          <CreateEditProduct />
+          <CreateEditProduct product={record} />
         </AppModal>
         <AppModal
           onOk={() => { alert('function delete Product') }}
