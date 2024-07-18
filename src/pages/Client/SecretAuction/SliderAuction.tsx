@@ -4,6 +4,7 @@ import React from 'react';
 interface SliderAuctionProps{
     data: any[];
 }
+
 function SliderAuction({ data }: SliderAuctionProps) {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
