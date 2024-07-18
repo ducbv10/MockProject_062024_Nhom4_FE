@@ -7,12 +7,13 @@ import Header from "@/layouts/Client/HeaderClient";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
 import DetailAuctionOnline from "./DetailAuctionOnline";
+import Payment from "./Payment";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <div className="my-4">
+      <div className="my-4"> nhớ mở lại dòng này sau khi code xong
         <UserNavbar />
       </div>
       <Banner />
@@ -33,6 +34,7 @@ const Home = () => {
       {/* <div className="mx-14">
       <DetailAuctionOnline/>
       </div> */}
+      {/* <Payment/> */}
       <Footer />
     </div>
   )
