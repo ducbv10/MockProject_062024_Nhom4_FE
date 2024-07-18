@@ -1,3 +1,4 @@
+import './styles/main.css';
 import * as ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -22,8 +23,6 @@ import AdminPage from "./pages/Admin";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
 import PersonalProfile from "./pages/Client/PersonalProfile";
-import ManageUser from "./pages/Admin/ManageUser"
-
 
 const router = createBrowserRouter([
   {
