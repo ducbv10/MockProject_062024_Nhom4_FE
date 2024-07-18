@@ -23,8 +23,6 @@ import AdminPage from "./pages/Admin";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
 import PersonalProfile from "./pages/Client/PersonalProfile";
-import ManageUser from "./pages/Admin/ManageUser"
-import SecretAuction from './pages/Client/SecretAuction/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -46,7 +44,7 @@ const router = createBrowserRouter([
   },
   {
     path: CONTACT,
-    element: <SecretAuction/>,
+    element: "<Contact />",
   },
   {
     path: SIGNIN_PATH,
