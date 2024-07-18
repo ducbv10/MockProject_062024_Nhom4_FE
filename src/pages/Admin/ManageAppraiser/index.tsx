@@ -67,7 +67,7 @@ const ManageAppraiser: React.FC = () => {
         <AppModal
           width={1000}
           trigger={
-            <button className="bg-[#3DBF00] px-5 py-2 rounded-[10px] text-white font-bold">Add Appraiser +</button>
+            <div className="bg-[#3DBF00] px-5 py-2 rounded-[10px] text-white font-bold">Add Appraiser +</div>
           }
           cancelText='Cancel'
           okText='Add Appraiser'

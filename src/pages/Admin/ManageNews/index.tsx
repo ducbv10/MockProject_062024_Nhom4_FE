@@ -15,12 +15,12 @@ const onChange: TableProps<any>["onChange"] = (
     console.log("params", pagination, filters, sorter, extra);
   };
 function ManageNews() {
-        const [open, setOpen] = useState(false)
+        const [isOpen, setOpen] = useState(false)
         // const location = useLocation();
         // const navigate = useNavigate()
         // const { formData } = location.state || {};
         const handleOnclick = () => {
-          if(!open) {
+          if(!isOpen) {
            setOpen(true)
          }
      }
@@ -60,10 +60,10 @@ function ManageNews() {
                 <button onClick={handleOnclick}  className="bg-[#4ad991] h-[28px] rounded-full mx-5 hover:bg-green-200 hover: border-[#4ad991] hover: border-2">
                       <span className="p-3 text-sm font-semibold text-[#256d49] text-center">Add News</span>
                 </button>
-                 {open &&  
+                 {isOpen &&  
                   <Modal
                   width="800px"
-                  visible={open}
+                  open={isOpen}
                   footer={null}
                   onCancel={handleCancel}
                   className="modal-responsive"

@@ -3,7 +3,13 @@ export const ADMIN_USERS_PATH = 'users';
 export const ADMIN_APPRAISER_PATH = 'appraiser';
 export const ADMIN_PERSONAL_INFOR_PATH = 'personal'
 export const ADMIN_USER_PATH = 'manager-user'
-
+export const ADMIN_NEWS_PATH = 'manager-news'
+export const ADMIN_WAREHOUSE_PATH = 'manager-warehouse'
+export const ADMIN_AUCTION_PATH = 'manager-auction'
+export const ADMIN_PRODUCT_PATH = 'manager-product'
+export const ADMIN_PR_AUCTION_PATH = 'presiding-auction'
+export const ADMIN_CUSTOMER_REQUEST_PATH = 'customer-request'
+export const ADMIN_LOGOUT_PATH = 'logout'
 export const STAFF_PATH = '/staff';
 export const STAFF_USER_PATH = 'user';
 export const STAFF_CATEGORY_PATH = 'category';

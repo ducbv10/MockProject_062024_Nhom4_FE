@@ -9,16 +9,22 @@ import { CiSquareQuestion, CiLogout } from "react-icons/ci";
 import { ContainerOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Menu } from 'antd';
+import { useState } from 'react';
+import ManageProduct from '@/pages/Admin/ManageProduct';
+import PresidingAuction from '@/pages/Admin/PresidingAuction';
+import ManageAuction from '@/pages/Admin/ManageAuction';
+import ManageWarehouse from '@/pages/Admin/ManageWarehouse';
+import ManageNews from '@/pages/Admin/ManageNews';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
   { key: '1', icon: <PiUserListThin />, label: 'Manager List User', },
   { key: '2', icon: <TbCategoryPlus />, label: 'Manager Category', },
   { key: '3', icon: <ContainerOutlined />, label: 'Manager New ', },
-  { key: '4', icon: <LiaWarehouseSolid />, label: 'Manager Warehose', },
+  { key: '4', icon: <LiaWarehouseSolid />, label: 'Manager Warehouse', },
   { key: '5', icon: <RiAuctionLine />, label: 'Manager Auction', },
   { key: '6', icon: <AiOutlineProduct />, label: 'Manager Product', },
-  { key: '7', icon: <TfiStamp />, label: 'Presiding Aution', },
+  { key: '7', icon: <TfiStamp />, label: 'Presiding Auction', },
   { key: '8', icon: <CiSquareQuestion />, label: 'Customer request', },
 ]
 const itemLogOut: MenuItem[] = [
@@ -39,61 +45,90 @@ const theme = {
 };
 function SidebarAdmin() {
   const navigate = useNavigate()
-  const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+  const [isShow, setIsShow] = useState(false)
+  const [isKey, setIsKey] = useState('')
+  const handleSelect: MenuProps['onSelect'] = ({ key }) => {
+    if(isShow){
+      setIsShow(true)
+      setIsKey(key)
+    }
+    else{
+      setIsShow(true)
+      setIsKey(key)
+    } 
+   
     switch (key) {
       case '1':
-        navigate('manager-list-user')
+        navigate('manager-user')
         break;
       case '2':
-        navigate('/manager-category')
+        navigate('manager-category')
         break;
       case '3':
-        navigate('/manager-news')
+        navigate('manager-news')
         break;
       case '4':
-        navigate('/manager-warehouse')
+        navigate('manager-warehouse')
         break;
       case '5':
-        navigate('/manager-auction')
+        navigate('manager-auction')
         break;
       case '6':
-        navigate('/manager-product')
+        navigate('manager-product')
         break;
       case '7':
-        navigate('/presiding-auction')
+        navigate('presiding-auction')
         break;
       case '8':
-        navigate('/customer-request  ')
+        navigate('customer-request')
         break;
       case '9':
-        navigate('/logout')
+        navigate('logout')
         break;
-
     }
+  
   }
-  return (
-    <ConfigProvider theme={theme}>
-      <div style={{ width: 256, display: 'flex', flexDirection: 'column' }}>
-        <Menu
-          defaultSelectedKeys={['0']}
-          mode="inline"
-          inlineIndent={50}
-          theme="light"
-          items={items}
-          onClick={handleMenuClick}
-        />
-        <div className='m-auto w-[200px] h-[2px] bg-gray-600 '>
+    return (
+      <>
+          <ConfigProvider theme={theme}>
+          <div style={{ width: 256, display: 'flex', flexDirection: 'column' }}>
+          <Menu
+            defaultSelectedKeys={['']}
+            mode="inline"
+            inlineIndent={50}
+            theme="light"
+            items={items}
+
+            onSelect={handleSelect}
+   
+           
+          />
+          <div className='m-auto w-[200px] h-[2px] bg-gray-600 '>
+          </div>
+          <Menu
+            defaultSelectedKeys={['']}
+            mode="inline"
+            inlineIndent={50}
+            theme="light"
+            items={itemLogOut}
+            onSelect={handleSelect}
+          />
         </div>
-        <Menu
-          defaultSelectedKeys={['']}
-          mode="inline"
-          inlineIndent={50}
-          theme="light"
-          items={itemLogOut}
-          onClick={handleMenuClick}
-        />
+      </ConfigProvider>
+      <div className='flex-1  mr-[50px]'>
+              {/* {isShow && (isKey==="1") && <ManageNews/>}
+              {isShow && (isKey==="2") && <ManageNews/>} */}
+              {isShow && (isKey==="3") && <ManageNews/>}
+              {isShow && (isKey==="4") && <ManageWarehouse/>}
+              {isShow && (isKey==="5") && <ManageAuction/>}
+              {isShow && (isKey==="6") && <ManageProduct/>}
+              {isShow && (isKey==="7") && <PresidingAuction/>}
+              {/* {isShow && (isKey==="8") && <customer-request/>} */}
+              {isShow && (isKey==="9") && <PresidingAuction/>}
       </div>
-    </ConfigProvider>
-  );
-}
+      </>
+    );
+  }
+
+
 export default SidebarAdmin;
