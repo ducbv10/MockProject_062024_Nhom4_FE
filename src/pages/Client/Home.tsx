@@ -15,7 +15,7 @@ const Home = () => {
       <div className="my-4">
         <UserNavbar />
       </div>
-      {/* <Banner />
+      <Banner />
       <div className="m-12">
         <AuctionedProducts />
       </div>
@@ -29,10 +29,10 @@ const Home = () => {
 
       <div className="mt-4">
         <SuccessAuctionedProducts />
-      </div> */}
-      <div className="mx-14">
-      <DetailAuctionOnline/>
       </div>
+      {/* <div className="mx-14">
+      <DetailAuctionOnline/>
+      </div> */}
       <Footer />
     </div>
   )
