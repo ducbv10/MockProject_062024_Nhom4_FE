@@ -23,16 +23,26 @@ import AdminPage from "./pages/Admin";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 // import ErrorPage from "./pages/Error/ErrorPage";
 import PersonalProfile from "./pages/Client/PersonalProfile";
-
+import NotFound from './pages/Errors/NotFound.tsx'
 const router = createBrowserRouter([
   {
     path: HOME_PATH,
     element: <Home />,
-    errorElement: "<ErrorPage />",
+    errorElement: <NotFound/>,
   },
   {
     path: PROFILE_PATH,
     element: <PersonalProfile />,
+    // children:[
+    //   {
+    //     path: "wonItems",
+    //     element: "<Profile />",
+    //   },
+    //   {
+    //     path: "auction",
+    //     element: "<Profile />",
+    //   },
+    // ]
   },
   {
     path: INTRODUCTION,
