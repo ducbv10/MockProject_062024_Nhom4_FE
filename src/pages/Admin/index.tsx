@@ -6,6 +6,7 @@ import ManageListUser from "./ManageUser";
 import StatisticalTables from "./Dashboad/StatisticalTables";
 import SalesChart from "./Dashboad/SalesChart";
 import DealsDetails from "./Dashboad/DealsDetails";
+import ManageWarehouse from "./ManageWarehouse";
 
 const AdminPage = () => {
   return (
@@ -16,9 +17,10 @@ const AdminPage = () => {
           <SidebarAdmin />  
         </div>
         <div className="w-5/6 mr-[50px]">
-          <StatisticalTables/>
+          {/* <StatisticalTables/>
           <SalesChart/>
-          <DealsDetails/>
+          <DealsDetails/> */}
+          <ManageWarehouse />
         </div>
       </div>
         
