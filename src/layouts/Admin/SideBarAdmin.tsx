@@ -18,6 +18,7 @@ import ManageNews from '@/pages/Admin/ManageNews';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
+  {key: '10', label: 'Dashboard'},
   { key: '1', icon: <PiUserListThin />, label: 'Manager List User', },
   { key: '2', icon: <TbCategoryPlus />, label: 'Manager Category', },
   { key: '3', icon: <ContainerOutlined />, label: 'Manager New ', },
@@ -85,8 +86,10 @@ function SidebarAdmin() {
       case '9':
         navigate('logout')
         break;
+      case '10':
+        navigate('/admin')
+        break;
     }
-  
   }
     return (
       <>
