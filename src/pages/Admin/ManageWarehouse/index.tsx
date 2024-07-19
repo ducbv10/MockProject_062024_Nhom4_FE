@@ -55,7 +55,7 @@ const ManageWarehouse: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="flex-1 h-[580px] px-[1%] space-y-10">
       <div className="flex flex-row justify-between">
         <h1 className="text-[20px] font-bold">Warehouse</h1>
         <AppModal
