@@ -2,17 +2,14 @@ import HeaderAdmin from "@/layouts/Admin/HeaderAdmin";
 import SidebarAdmin from "@/layouts/Admin/SideBarAdmin";
 import FooterAdmin from "@/layouts/Admin/FooterAdmin";
 import ManageProduct from "./ManageProduct";
-
-
-
 import ManageListUser from "./ManageUser";
 import StatisticalTables from "./Dashboad/StatisticalTables";
 import SalesChart from "./Dashboad/SalesChart";
 import DealsDetails from "./Dashboad/DealsDetails";
+
 const AdminPage = () => {
   return (
     <div>
-   
       <HeaderAdmin />
       <div className="flex flex-row">
         <div className="w-1/6">
@@ -24,8 +21,9 @@ const AdminPage = () => {
           <DealsDetails/>
         </div>
       </div>
-
+        
       <FooterAdmin />
+ 
     </div>
   );
 }

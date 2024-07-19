@@ -14,37 +14,46 @@ const onChange: TableProps<Auction>["onChange"] = (
   console.log("params", pagination, filters, sorter, extra);
 };
 
+const exampleAuctions: Auction[] = [
+  {
+    id: "1",
+    auctionName: "Auction 1",
+    auctionForm: "Private Auction",
+    location: "Location 1",
+    productCategory: "Category 1",
+    productName: "Product 1",
+    productDetail: "Detail 1",
+    auctionMaster: "Master 1",
+    status: "Not Identified",
+    startTime: "2022-12-12",
+    endTime: "2022-12-12",
+    isLive: false,
+  },
+  {
+    id: "2",
+    auctionName: "Auction 2",
+    auctionForm: "Public Auction",
+    location: "Location 2",
+    productCategory: "Category 2",
+    productName: "Product 2",
+    productDetail: "Detail 2",
+    auctionMaster: "Master 2",
+    status: "Closed",
+    startTime: "2022-12-12",
+    endTime: "2022-12-12",
+    isLive: true,
+  },
+];
+
 const ManageAuction: React.FC = () => {
   // const [products, setProducts] = useState<Product[]>([]);
-  const exampleAuctions: Auction[] = [
-    {
-      id: "1",
-      auctionName: "Auction 1",
-      productName: "Product 1",
-      productDetail: "Product 1 detail",
-      dateTime: new Date().toISOString(),
-      status: "In - Progress",
-      isLive: true,
-    },
-    {
-      id: "2",
-      auctionName: "Auction 2",
-      productName: "Product 2",
-      productDetail: "Product 2 detail",
-      dateTime: new Date().toISOString(),
-      status: "End",
-      isLive: false,
-    },
-    {
-      id: "3",
-      auctionName: "Auction 3",
-      productName: "Product 3",
-      productDetail: "Product 3 detail",
-      dateTime: new Date().toISOString(),
-      status: "Upcoming",
-      isLive: false,
-    }
-  ];
+  const [selectedAppraiser, setSelectedAppraiser] = useState<Auction | null>(null);
+
+  const handleEditClick = (auction: Auction) => {
+    setSelectedAppraiser(auction);
+  };
+
+  const getColumns = columns(handleEditClick);
 
   return (
     <div className="space-y-10">
@@ -53,15 +62,14 @@ const ManageAuction: React.FC = () => {
         <AppModal
           width={1000}
           trigger={
-            <button className="bg-[#3DBF00] px-5 py-2 rounded-[10px] text-white font-bold">Add Auction</button>
+            <div className="bg-[#3DBF00] px-5 py-2 rounded-[10px] text-white font-bold">Add Auction</div>
           }
         >
-          <CreateEditAuction />
+          <CreateEditAuction auction={null} />
         </AppModal>
-
       </div>
       <Table
-        columns={columns}
+        columns={getColumns}
         dataSource={exampleAuctions.map((item, index) => ({ ...item, key: index }))}
         onChange={onChange}
       />

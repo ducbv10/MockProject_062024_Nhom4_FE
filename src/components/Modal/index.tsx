@@ -26,7 +26,8 @@ const AppModal: React.FC<AppModalProps> = ({ trigger, children, ...rest }) => {
         onCancel={() => {
           setOpen(false);
         }}
-        cancelText={"Cancel"}
+        okButtonProps={{className:'hidden'}}
+        cancelButtonProps={{className:'hidden'}}
         {...rest}
       >
         {children}

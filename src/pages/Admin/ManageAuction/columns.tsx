@@ -7,7 +7,7 @@ import { IoTrash } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
 import { CiStreamOn, CiStreamOff } from "react-icons/ci";
 
-const columns: TableColumnsType<Auction> = [
+const columns = (handleEditClick: (appraiser: Auction) => void): TableColumnsType<Auction> => [
   {
     title: "ID",
     dataIndex: "id",
@@ -33,8 +33,14 @@ const columns: TableColumnsType<Auction> = [
     render: (value) => <p>{value}</p>,
   },
   {
-    title: "Date Time",
-    dataIndex: "dateTime",
+    title: "Start Time",
+    dataIndex: "startTime",
+    align: "center",
+    render: (value) => <p>{value}</p>,
+  },
+  {
+    title: "End Time",
+    dataIndex: "endTime",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
@@ -82,10 +88,12 @@ const columns: TableColumnsType<Auction> = [
           width={1000}
           onOk={() => { alert('function update auction') }}
           trigger={
-            <button className="bg-[#3DBF00] p-2 rounded-[5px] text-white text-[18px] font-bold"><FaEdit /></button>
+            <button
+              onClick={() => handleEditClick(record)}
+              className="bg-[#3DBF00] p-2 rounded-[5px] text-white text-[18px] font-bold"><FaEdit /></button>
           }
         >
-          <CreateEditAuction />
+          <CreateEditAuction auction={record} />
         </AppModal>
         <AppModal
           onOk={() => { alert('function delete auction') }}
