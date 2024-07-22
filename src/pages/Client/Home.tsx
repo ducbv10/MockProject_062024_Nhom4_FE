@@ -10,8 +10,8 @@ const Home = () => {
     try {
       const response = await request({
         method: 'get',
-        serverType: 'php',
-        apiEndpoint: 'assets/AS00000001',
+        serverType: 'node',
+        apiEndpoint: 'v1/location/states',
       });
       console.log(response?.data);
     } catch (error) {

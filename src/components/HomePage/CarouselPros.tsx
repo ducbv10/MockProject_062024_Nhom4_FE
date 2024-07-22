@@ -60,7 +60,7 @@ const CarouselPros: React.FC<CarouselProsProps> = ({ items }) => {
   const groupedItems = groupItems(items, 4);
 
   const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
+    // console.log(currentSlide);
   };
 
   return (
