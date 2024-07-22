@@ -1,6 +1,5 @@
 import { Modal, Table, TableProps } from "antd";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import columns from "./columns";
 import CreateNews from "./CreateNews";
 
@@ -54,7 +53,7 @@ function ManageNews() {
               },
           ];
         return ( 
-            <div className=" flex-1 ">
+            <div className=" flex-1 h-[580px] ">
             <header className=" flex justify-between items-center mb-4 ">
                <h1 className="text-3xl font-semibold mx-3">News</h1>
                 <button onClick={handleOnclick}  className="bg-[#4ad991] h-[28px] rounded-full mx-5 hover:bg-green-200 hover: border-[#4ad991] hover: border-2">

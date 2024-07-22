@@ -1,14 +1,31 @@
+import { Warehouse } from "@/types/Warehouse";
 import { DatePicker, DatePickerProps } from "antd";
-import { useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const ImportProduct = () => {
+interface ExportProductProps {
+  exportProduct: Warehouse | null;
+}
+
+const ExportProduct: FC<ExportProductProps> = ( {exportProduct} ) => { 
   const initialFormData = {
     id: "",
     productId: "",
     quantity: "",
     position: "",
-    importDate: "",
+    exportDate: "",
   };
+
+  useEffect(() => {
+    if (exportProduct) {
+      setFormData({
+        id: exportProduct.id,
+        productId: exportProduct.productId,
+        quantity: exportProduct.quantity.toString(),
+        position: exportProduct.position,
+        exportDate: exportProduct.exportDate,
+      });
+    }
+  }, [exportProduct]);
 
   const [formData, setFormData] = useState(initialFormData);
 
@@ -19,7 +36,7 @@ const ImportProduct = () => {
 
   const handleDateChange = (date: DatePickerProps['value'], dateString: string | string[]) => {
     const formattedDate = Array.isArray(dateString) ? dateString[0] : dateString;
-    setFormData({ ...formData, importDate: formattedDate });
+    setFormData({ ...formData, exportDate: formattedDate });
   };
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +51,6 @@ const ImportProduct = () => {
   const handleOnReset = () => { 
     setFormData(initialFormData);
   };
-
   return (
     <form className="flex flex-col space-y-2 m-[10px]" onSubmit={handleOnSubmit}>
       <div className="flex flex-row justify-center">
@@ -53,7 +69,7 @@ const ImportProduct = () => {
         <input type='text' name="position" value={formData.position} onChange={handleInputChange} className="w-full h-[35px] rounded-[5px] border-2" required />
       </div>
       <div className="space-y-2">
-        <p>Import Date</p>
+        <p>Export Date</p>
         <DatePicker
           showTime
           onChange={handleDateChange}
@@ -68,4 +84,4 @@ const ImportProduct = () => {
   );
 }
 
-export default ImportProduct;
+export default ExportProduct;

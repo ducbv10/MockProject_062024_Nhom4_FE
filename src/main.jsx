@@ -24,7 +24,14 @@ import AdminPage from "./pages/Admin";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 import NotFound from "./pages/Errors/NotFound";
 import PersonalProfile from "./pages/Client/PersonalProfile";
+import ErrorPage from "./pages/Error/ErrorPage.tsx";
 
+import PersonalProfile from "./pages/Client/PersonalProfile";
+import ManegeNews from "./pages/Admin/ManageNews"
+import ManageWarehouse from "./pages/Admin/ManageWarehouse"
+import ManageAuction from "./pages/Admin/ManageAuction"
+import ManageProduct from './pages/Admin/ManageProduct';
+import PresidingAuction from "./pages/Admin/PresidingAuction"
 
 const router = createBrowserRouter([
   {
@@ -60,49 +67,43 @@ const router = createBrowserRouter([
     path: ADMIN_PATH,
     element: <AdminPage />,
     children: [
+      // {
+      //   path: ADMIN_PERSONAL_INFOR_PATH,
+      //   element: <PersonalInfor/>
+      // },
       {
-        path: ADMIN_PERSONAL_INFOR_PATH,
-        element: <AdminPage />
+        path: ADMIN_USER_LIST_PATH,
+        element: <ErrorPage/>
       },
-      {
-        path: ADMIN_USER_PATH,
-        element: <AdminPage/>
-      },
+      
       {
         path: ADMIN_NEWS_PATH,
-        element: <AdminPage/>
+        element: <ManegeNews/>
       },
       {
         path: ADMIN_WAREHOUSE_PATH,
-        element: <AdminPage/>
+        element: <ManageWarehouse/>
       },
       {
         path: ADMIN_AUCTION_PATH,
-        element: <AdminPage/>
+        element: <ManageAuction/>
       },
       {
         path: ADMIN_PRODUCT_PATH,
-        element: <AdminPage/>
+        element: <ManageProduct/>
       },
       {
         path: ADMIN_PR_AUCTION_PATH,
-        element: <AdminPage/>
+        element: <PresidingAuction/>
       },
       {
         path: ADMIN_CUSTOMER_REQUEST_PATH,
-        element: <AdminPage/>
+        element: <ErrorPage/>
       },
-      
-
-      // {
-      //   path: ADMIN_USERS_PATH,
-      //   element: "<AdminUsers />",
-      // },
       {
         path: ADMIN_APPRAISER_PATH,
         element: "<AdminAppraiser />",
       },
-      
     ],
     errorElement: "<ErrorPage />",
   },
