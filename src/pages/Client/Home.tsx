@@ -1,23 +1,29 @@
 import UpcomingAuctions from "@/components/UpcomingAuctions";
 import Banner from "../../components/Banner";
-import UserNavbar from "../../components/Navbar";
-import Footer from "../../layouts/Client/FooterClient";
 import SuccessAuctionedProducts from "@/components/SuccessAuctionedProducts";
-import Header from "@/layouts/Client/HeaderClient";
 import AuctionedProducts from "@/components/HomePage/AuctionedProducts";
 import CurrentAuctionPro from "@/components/HomePage/CurrentAuctionPro";
+import request from "@/utils/request";
 
 const Home = () => {
+  const fetchAuction = async () => {
+    try {
+      const response = await request({
+        method: 'get',
+        serverType: 'php',
+        apiEndpoint: 'assets/AS00000001',
+      });
+      console.log(response?.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchAuction();
+
   return (
     <div>
-      <Header />
-      
-      <div className="my-4">
-        <UserNavbar />
-      </div>
-
       <Banner />
-
       <div className="m-12">
         <AuctionedProducts />
       </div>
@@ -33,7 +39,6 @@ const Home = () => {
       <div className="mt-4">
         <SuccessAuctionedProducts />
       </div>
-      <Footer />
     </div>
   )
 }
