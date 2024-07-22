@@ -1,4 +1,3 @@
-import React from 'react'
 import CarouselPros from './CarouselPros';
 import { ImHammer2 } from 'react-icons/im';
 

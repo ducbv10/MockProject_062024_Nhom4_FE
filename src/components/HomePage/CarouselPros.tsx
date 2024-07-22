@@ -1,6 +1,6 @@
 import React from 'react';
-import { Carousel, ConfigProvider } from 'antd';
-import coinImage from '@/assets/images/coin.png';
+import { Button, Carousel, ConfigProvider } from 'antd';
+const coinImage = "./../src/assets/images/coin.png"
 
 // Define styles for the content of the carousel
 const contentStyle: React.CSSProperties = {
@@ -76,7 +76,7 @@ const CarouselPros: React.FC<CarouselProsProps> = ({ items }) => {
                   <img src={coinImage} alt={item.name} className="w-[250px] h-[250px] object-cover mx-auto mb-2" />
                   <div className="font-semibold text-[18px] text-center">{item.name}</div>
                   <div className="">Starting bid: <span className='font-semibold'>{item.startbid} USD</span></div>
-                  <button className="mt-2 px-4 py-2 bg-[#B41712] text-white rounded">Join the Auction</button>
+                  <Button className="mt-2 px-4 py-2 bg-[#B41712] text-white rounded">Join the Auction</Button>
                 </div>
               ))}
             </div>
