@@ -15,6 +15,8 @@ const LoginForm = () => {
         data: values,
         apiEndpoint: 'v1/user/login',
       });
+      alert("Successfully logged in!!!")
+      navigate('/')
     } catch (error) {
       console.error(error);
     }

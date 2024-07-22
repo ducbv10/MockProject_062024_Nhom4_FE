@@ -3,7 +3,7 @@ import AuctionItem from "./AuctionItem";
 import { PiArrowRightFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import request from "@/utils/request";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UpCommingAuction } from "@/types/Auction";
 const auctionImg = './src/assets/images/auctionItem.png';
 
@@ -17,14 +17,16 @@ function UpcomingAuctions() {
         serverType: 'java',
         apiEndpoint: 'v1/auctions/top-6',
       });
-      setUpcomingData(response?.data);
+      setUpcomingData(response?.data.data);
       console.log(response?.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  // fetchUpcommingAuction();
+  useEffect(() => {
+    fetchUpcommingAuction();
+  }, []);
 
   return (
     <div className="mx-20">
@@ -41,9 +43,9 @@ function UpcomingAuctions() {
           <AuctionItem
             key={auction.id}
             auctionName={auction.auctionName}
-            startTime={auction.startTime}
-            endTime={auction.endTime}
-            imgSrc={auction.img}
+            startDate={auction.startDate}
+            endDate={auction.endDate}
+            imgSrc={auctionImg}
           />
         ))}
       </div>

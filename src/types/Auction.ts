@@ -21,9 +21,17 @@ export type UpCommingAuction = {
   location: string,
   productCategory: string,
   status: string,
-  startTime: string,
-  endTime: string,
+  startDate: string,
+  endDate: string,
   img: string
+}
+
+export type Auctioned = {
+  id: string,
+  auctionName: string,
+  startDate: string,
+  startingPrice: string,
+  image: string,
 }
 
 export {type Auction};
