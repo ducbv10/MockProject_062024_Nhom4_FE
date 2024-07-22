@@ -5,6 +5,8 @@ import { number } from "yup";
 import Item from "antd/es/list/Item";
 import axios from "axios";
 import { error } from "console";
+import request from "@/utils/request";
+import { createUserPayload } from "@/types/User";
 const { Option } = Select;
 
 // const formItemLayout = {
@@ -89,14 +91,21 @@ function Register() {
     setIsOpen(false);
     navigate('/');
   };
-  const onFinish = (values: any) => {
-    axios.post('https://b9e6-116-110-80-136.ngrok-free.app/api-docs/#/User/post_user_register',values)
-          .then( response => {
-            message.success("Form submit form")
-            console.log("data",response)}
-          )
-          .catch(() => {
-            message.error("failed to submit form")})
+  const onFinish = (values: createUserPayload[]) => {
+    const fetchAuction = async () => {
+    try {
+      await request({
+        method: 'post',
+        serverType: 'node',
+        apiEndpoint: 'v1/user/register',
+        data: values,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchAuction();
   };
   
   useEffect(() => {
@@ -146,8 +155,8 @@ function Register() {
                     {/* Email */}
                     <Col lg={8} xs={24} md={12} >
                       <Form.Item
-                        name = {["email"]}
-                        label="Username/Email"
+                        name= "email"
+                        label="Email"
                         rules={[
                           {
                             type: "email",
@@ -167,7 +176,7 @@ function Register() {
                     {/* Firstname */}
                     <Col lg={8} xs={24} md={12} >
                       <Form.Item
-                        name="name"
+                        name="userName"
                         label="Firstname"
                         // tooltip="What do you want others to call you?"
                         rules={[
@@ -205,20 +214,20 @@ function Register() {
                     {/* Country  row 2*/}
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="country"
-                        label="Country"
+                        name="zipCodeId"
+                        label="Zip Code Id"
                         // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
-                            message: "Please input your country!",
+                            message: "Please input your Zip Code Id!",
                             whitespace: true,
                           },
                         ]}
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                       >
-                        <Input placeholder="Country" />
+                        <Input placeholder="Zip Code Id" />
                       </Form.Item>
                     </Col>
                     {/* State/Province  row 2*/}

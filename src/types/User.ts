@@ -47,3 +47,8 @@ export type createUserPayload = {
     role: Role;
     avatar?: string;
 };
+
+export type UserLogin ={
+    email: string;
+    password: string;
+}
