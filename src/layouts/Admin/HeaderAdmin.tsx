@@ -5,7 +5,7 @@ import { useState } from "react";
 import NotificationMenu from "@/components/NotificationMenu/NotificationMenu";
 import NotificationItem from "@/components/NotificationMenu/NotificationItem/NotificationItem";
 import FormPersonalInfomation from "@/pages/Admin/PersonalInfor/PersonalInfor";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 const HeaderAdmin = () => {
   const [isShow, setShow] = useState(false);
   const [isShowInfo, setShowInfo] = useState(false);
@@ -26,7 +26,6 @@ const HeaderAdmin = () => {
   };
   const handlShowFormPersonal = () => {
     setShowInfo(true);
-    navigate("personal");
   };
   const handleCancel = () => {
     setShowInfo(false);
@@ -34,7 +33,7 @@ const HeaderAdmin = () => {
   };
 
   return (
-    <header className=" max-w-full  h-full max-h-max bg-white">
+    <header className="fixed right-0 left-0 max-w-full max-h-max z-10 bg-white shadow-sm">
       <div className="p-7 flex items-center w-full">
         <div className="w-[100px] ml-12 mr-40 ">
           <a href="/admin">
@@ -120,7 +119,7 @@ const HeaderAdmin = () => {
                 </button>
                 <Modal
                   width="700px"
-                  visible={isShowInfo}
+                  open={isShowInfo}
                   onCancel={handleCancel}
                   footer={null}
                   className="modal-responsive"
@@ -128,7 +127,7 @@ const HeaderAdmin = () => {
                   <div className="my-3 text-center">
                     <h1 className="text-lg font-bold">Personal Information</h1>
                   </div>
-                  <FormPersonalInfomation />
+                 <FormPersonalInfomation />
                 </Modal>
                 <span>
                   <p className="text-sm text-gray-600">admin</p>

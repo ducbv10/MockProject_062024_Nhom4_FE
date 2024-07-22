@@ -1,8 +1,9 @@
 import { TableColumnsType } from "antd";
 import { Warehouse } from "@/types/Warehouse";
 import AppModal from "@/components/Modal";
+import ExportProduct from "./ExportProduct";
 
-const columns: TableColumnsType<Warehouse> = [
+const columns = (handleEditClick: (appraiser: Warehouse) => void): TableColumnsType<Warehouse> => [
   {
     title: "ID",
     dataIndex: "id",
@@ -49,14 +50,16 @@ const columns: TableColumnsType<Warehouse> = [
     title: "Action",
     dataIndex: "",
     align: "center",
-    render: () => (
+    render: (_,record) => (
       <div className="flex flex-row justify-center space-x-5">
         <AppModal
           trigger={
-            <button className="bg-[#FF0000] p-2 rounded-[5px] text-white text-[18px] font-bold">Export</button>
+            <button 
+              onClick={() => handleEditClick}
+              className="bg-[#FF0000] p-2 rounded-[5px] text-white text-[18px] font-bold">Export</button>
           }
         >
-          <div>hihi</div>
+          <ExportProduct exportProduct={record} />
         </AppModal>
       </div>
     )
