@@ -23,9 +23,9 @@ import AdminPage from "./pages/Admin";
 // import AdminUsers from "./pages/Admin/Users";
 // import AdminAppraiser from "./pages/Admin/Appraiser";
 import NotFound from "./pages/Errors/NotFound";
+import PersonalProfile from "./pages/Client/PersonalProfile";
 import ErrorPage from "./pages/Error/ErrorPage.tsx";
 
-import PersonalProfile from "./pages/Client/PersonalProfile";
 import ManegeNews from "./pages/Admin/ManageNews"
 import ManageWarehouse from "./pages/Admin/ManageWarehouse"
 import ManageAuction from "./pages/Admin/ManageAuction"
