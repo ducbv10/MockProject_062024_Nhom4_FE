@@ -2,7 +2,7 @@ import './styles/main.css'
 import * as ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ADMIN_PATH, ADMIN_APPRAISER_PATH, ADMIN_USERS_PATH, HOME_PATH, SIGNUP_PATH, SIGNIN_PATH, PROFILE_PATH, INTRODUCTION, NEWS, CONTACT, STAFF_PATH, STAFF_USER_PATH, STAFF_CATEGORY_PATH, STAFF_NEW_PATH, STAFF_WAREHOUSE_PATH, STAFF_AUCTION_PATH, STAFF_PRODUCT_PATH, STAFF_REQUEST_PATH, ADMIN_PERSONAL_INFOR_PATH,ADMIN_USER_PATH, ADMIN_NEWS_PATH,ADMIN_WAREHOUSE_PATH,ADMIN_AUCTION_PATH,ADMIN_PRODUCT_PATH,ADMIN_LOGOUT_PATH,ADMIN_PR_AUCTION_PATH,
+import { ADMIN_PATH, ADMIN_APPRAISER_PATH, ADMIN_USER_LIST_PATH, HOME_PATH, SIGNUP_PATH, SIGNIN_PATH, PROFILE_PATH, INTRODUCTION, NEWS, CONTACT, STAFF_PATH, STAFF_USER_PATH, STAFF_CATEGORY_PATH, STAFF_NEW_PATH, STAFF_WAREHOUSE_PATH, STAFF_AUCTION_PATH, STAFF_PRODUCT_PATH, STAFF_REQUEST_PATH, ADMIN_PERSONAL_INFOR_PATH,ADMIN_USER_PATH, ADMIN_NEWS_PATH,ADMIN_WAREHOUSE_PATH,ADMIN_AUCTION_PATH,ADMIN_PRODUCT_PATH,ADMIN_LOGOUT_PATH,ADMIN_PR_AUCTION_PATH,
   ADMIN_CUSTOMER_REQUEST_PATH} from './constants/Routes';
 import ClientLayout from './layouts/Client/ClientLayout';
 // import Profile from './pages/Client/Profile';
@@ -26,7 +26,6 @@ import NotFound from "./pages/Errors/NotFound";
 import PersonalProfile from "./pages/Client/PersonalProfile";
 import ErrorPage from "./pages/Error/ErrorPage.tsx";
 
-import PersonalProfile from "./pages/Client/PersonalProfile";
 import ManegeNews from "./pages/Admin/ManageNews"
 import ManageWarehouse from "./pages/Admin/ManageWarehouse"
 import ManageAuction from "./pages/Admin/ManageAuction"

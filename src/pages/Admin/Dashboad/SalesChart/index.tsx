@@ -1,6 +1,5 @@
-import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } 
+from 'recharts';
 
 const data = [
   { name: '5k', uv: 40, pv: 24, amt: 24 },
