@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 const servers = {
     php: "dec4-14-176-232-65",
     node: "b9e6-116-110-80-136",
-    java: "0b35-171-243-49-233",
+    java: "8c76-171-243-49-233",
 };
 
 const createAxiosInstance = (serverType: 'php' | 'node' | 'java', apiEndpoint: string) => {
@@ -20,7 +20,7 @@ const createAxiosInstance = (serverType: 'php' | 'node' | 'java', apiEndpoint: s
 
 interface RequestOptions {
     method: AxiosRequestConfig['method'];
-    data?: any;
+    data?: unknown;
     serverType?: 'php' | 'node' | 'java';
     apiEndpoint?: string;
     onSuccess?: (data: any) => void;
