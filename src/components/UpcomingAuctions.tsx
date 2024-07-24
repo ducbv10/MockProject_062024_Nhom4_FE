@@ -41,8 +41,8 @@ function UpcomingAuctions() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {upcomingData.map((auction: UpCommingAuction) => (
           <AuctionItem
-            key={auction.id}
-            auctionName={auction.auctionName}
+            key={auction.auctionId}
+            auctionName={auction.name}
             startDate={auction.startDate}
             endDate={auction.endDate}
             imgSrc={auctionImg}

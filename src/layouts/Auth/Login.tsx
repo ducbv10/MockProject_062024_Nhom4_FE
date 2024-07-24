@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
   const logo = './src/assets/logo.png';
   const navigate = useNavigate();
+  const login = "userLogined";
 
   const onFinish = async (values: UserLogin[]) => {
     try {
@@ -15,8 +16,8 @@ const LoginForm = () => {
         data: values,
         apiEndpoint: 'v1/user/login',
       });
-      alert("Successfully logged in!!!")
-      navigate('/')
+      localStorage.setItem("login", login);
+      navigate('/');
     } catch (error) {
       console.error(error);
     }
@@ -74,9 +75,9 @@ const LoginForm = () => {
               Save login
             </label>
           </div>
-          <button className="text-[#B7201B] font-bold text-[14px] md:text-[16px] lg:text-[18px]">
+          <p className="text-[#B7201B] font-bold text-[14px] md:text-[16px] lg:text-[18px]">
             Forgot password?
-          </button>
+          </p>
         </div>
         <div className="flex justify-center">
           <button className="bg-[#B7201B] w-full md:w-[350px] lg:w-[450px] px-3 py-2 rounded-[10px] text-white font-bold text-[14px] md:text-[16px] lg:text-[18px]"

@@ -35,7 +35,7 @@ const AuctionedProducts = () => {
         </div>
           <div className='grid gap-4 grid-cols-3 '>
               {auctioned.map((auction) => (
-                  <div key={auction.id}>
+                  <div key={auction.auctionId}>
                       <h3>{auction.auctionName}</h3>
                       <p>Start Date: {auction.startDate}</p>
                       <p>Starting Price: {auction.startingPrice}</p>

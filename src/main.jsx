@@ -25,7 +25,7 @@ import AdminPage from "./pages/Admin";
 import NotFound from "./pages/Errors/NotFound";
 import PersonalProfile from "./pages/Client/PersonalProfile";
 import ErrorPage from "./pages/Error/ErrorPage.tsx";
-
+import ManageListUser from './pages/Admin/ManageUser/index.tsx'
 import ManegeNews from "./pages/Admin/ManageNews"
 import ManageWarehouse from "./pages/Admin/ManageWarehouse"
 import ManageAuction from "./pages/Admin/ManageAuction"
@@ -66,10 +66,10 @@ const router = createBrowserRouter([
     path: ADMIN_PATH,
     element: <AdminPage />,
     children: [
-      // {
-      //   path: ADMIN_PERSONAL_INFOR_PATH,
-      //   element: <PersonalInfor/>
-      // },
+      {
+        path: ADMIN_USER_LIST_PATH,
+        element: <ManageListUser/>
+      },
       {
         path: ADMIN_USER_LIST_PATH,
         element: <ErrorPage/>

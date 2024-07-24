@@ -46,7 +46,6 @@ function Register() {
   const [selectBank, setSelectBank] = useState(null)
   const handleChangeBank = (value:any) => {
         setSelectBank(value)
-        console.log(value)
   }
   const bankNameValue = [
     {id:"1",
@@ -93,6 +92,7 @@ function Register() {
   };
   const onFinish = (values: createUserPayload[]) => {
     const fetchAuction = async () => {
+      console.log(values);
     try {
       await request({
         method: 'post',

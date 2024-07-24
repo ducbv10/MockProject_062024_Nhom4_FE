@@ -5,42 +5,41 @@ import CreateEditAuction from "./CreateEditAuction";
 import DeleteAuction from "./DeleteAuction";
 import { IoTrash } from "react-icons/io5";
 import { FaEdit } from "react-icons/fa";
-import { CiStreamOn, CiStreamOff } from "react-icons/ci";
 
 const columns = (handleEditClick: (appraiser: Auction) => void): TableColumnsType<Auction> => [
   {
     title: "ID",
-    dataIndex: "id",
+    dataIndex: "auctionId",
     align: "center",
     render: (value) => <p>{value}</p>
   },
   {
     title: "Auction Name",
-    dataIndex: "auctionName",
+    dataIndex: "name",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
   {
-    title: "Product Name",
-    dataIndex: "productName",
+    title: "Method",
+    dataIndex: "method",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
   {
-    title: "Product Detail",
-    dataIndex: "productDetail",
+    title: "Secret",
+    dataIndex: "isSecret",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
   {
     title: "Start Time",
-    dataIndex: "startTime",
+    dataIndex: "startDate",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
   {
     title: "End Time",
-    dataIndex: "endTime",
+    dataIndex: "endDate",
     align: "center",
     render: (value) => <p>{value}</p>,
   },
@@ -63,27 +62,6 @@ const columns = (handleEditClick: (appraiser: Auction) => void): TableColumnsTyp
     align: "center",
     render: (_, record) => (
       <div className="flex flex-row justify-center space-x-5">
-        {record.isLive ? (
-          <AppModal
-            width={1000}
-            onOk={() => { alert('function pause auction') }}
-            trigger={
-              <button className="bg-[#D8D8D8] p-2 rounded-[5px] text-[red] text-[18px] font-bold"><CiStreamOn /></button>
-            }
-          >
-            <div>Bạn muốn tạm dừng phiên đấu giá này ?</div>
-          </AppModal>
-        ) : (
-          <AppModal
-            width={1000}
-            onOk={() => { alert('function resume auction') }}
-            trigger={
-              <button className="bg-[#D8D8D8] p-2 rounded-[5px] text-[red] text-[18px] font-bold"><CiStreamOff /></button>
-            }
-          >
-            <div>Bạn muốn tiếp tục mở phiên đấu giá này ?</div>
-          </AppModal>
-        )}
         <AppModal
           width={1000}
           onOk={() => { alert('function update auction') }}
@@ -102,7 +80,7 @@ const columns = (handleEditClick: (appraiser: Auction) => void): TableColumnsTyp
             <button className="bg-[#FF0000] p-2 rounded-[5px] text-white text-[18px] font-bold"><IoTrash /></button>
           }
         >
-          <DeleteAuction />
+          <DeleteAuction data ={record}/>
         </AppModal>
       </div>
     )
