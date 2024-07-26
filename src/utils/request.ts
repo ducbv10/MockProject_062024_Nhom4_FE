@@ -1,49 +1,44 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const AXIOS = axios.create({
-    baseURL: process.env.VITE_BASE_SERVER_URL,
-    withCredentials: true,
-    timeout: 60000,
-    headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json;charset=utf-8',
-    },
-});
+const servers = {
+    php: "dec4-14-176-232-65",
+    node: "b9e6-116-110-80-136",
+    java: "8c76-171-243-49-233",
+};
 
-AXIOS.interceptors.request.use(
-    function (config) {
-        // Do something before request is sent
-        // console.log("interceptors.request", config);
-        // config.headers.Authorization = `Bearer ${localStorage.getItem("TOKEN")}`;
-        return config;
-    },
-    function (error) {
-        // Do something with request error
-        // console.log("interceptors.request.error", error);
-        return Promise.reject(error);
-    },
-);
-
+const createAxiosInstance = (serverType: 'php' | 'node' | 'java', apiEndpoint: string) => {
+    return axios.create({
+        baseURL: `https://${servers[serverType]}.ngrok-free.app/api/${apiEndpoint}`,
+        withCredentials: false,
+        timeout: 30000,
+        headers: {
+            'ngrok-skip-browser-warning': 'true',
+            'Content-type': 'application/json;charset=utf-8',
+        },
+    });
+};
 
 interface RequestOptions {
     method: AxiosRequestConfig['method'];
-    url: string;
-    data?: any;
+    data?: unknown;
+    serverType?: 'php' | 'node' | 'java';
+    apiEndpoint?: string;
     onSuccess?: (data: any) => void;
     onError?: (error: any) => void;
 }
 
 const request = async ({
     method,
-    url,
     data,
     onSuccess = () => { },
     onError = () => { },
+    serverType = 'php',
+    apiEndpoint = '',
 }: RequestOptions) => {
     try {
+        const AXIOS = createAxiosInstance(serverType, apiEndpoint);
         const response = await AXIOS({
             method,
-            url,
             data,
         });
         // Xử lý hiển thị popup thành công

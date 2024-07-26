@@ -1,6 +1,22 @@
-import { Checkbox, Form } from "antd";
+import request from "@/utils/request";
+import { Button, Checkbox, Form } from "antd";
 
-const DeleteAuction = () => {
+const DeleteAuction = (data:any) => {
+  const deleteAuction = () => {
+    try {
+      request({
+        method: 'get',
+        serverType: 'java',
+        apiEndpoint: `v1/auctions/${data.auctionId}`,
+        onSuccess: (data: any) => {
+          console.log("Return", data);
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Form className="flex flex-col space-y-5 m-[10px]">
       <div className="flex flex-row justify-center">
@@ -13,24 +29,15 @@ const DeleteAuction = () => {
         <div className="w-1/2 space-y-3">
           <p className="text-[18px] font-bold">ID</p>
           <p className="text-[18px] font-bold">Auction Name</p>
-          <p className="text-[18px] font-bold">Status</p>
-          <p className="text-[18px] font-bold">Product Name</p>
-          <p className="text-[18px] font-bold">Product Detail</p>
-          <p className="text-[18px] font-bold">Product Category</p>
-          <p className="text-[18px] font-bold">Datetime</p>
         </div>
         <div className="w-1/2 space-y-3">
-          <p className="text-[18px]">ID</p>
-          <p className="text-[18px]">Auction Name</p>
-          <p className="text-[18px]">Status</p>
-          <p className="text-[18px]">Product Name</p>
-          <p className="text-[18px]">Product Detail</p>
-          <p className="text-[18px]">Product Category</p>
-          <p className="text-[18px]">Datetime</p>
+          <p className="text-[18px]">{data.auctionId}</p>
+          <p className="text-[18px]">{data.name}</p>
         </div>
       </div>
       <p>Please confirm your action:</p>
       <Checkbox>Yes, I would like to delete this auction.</Checkbox>
+      <Button danger onClick={deleteAuction}>Delete</Button>
     </Form>
   );
 }

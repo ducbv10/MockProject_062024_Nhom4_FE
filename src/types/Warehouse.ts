@@ -3,9 +3,9 @@ type Warehouse = {
   productId: string;
   quantity: number;
   position: string;
-  importDate: string | Date;  
-  exportDate: string | Date;
-  deleteAt: string | Date;
+  importDate: string;  
+  exportDate: string;
+  deleteAt: string;
 }
 
 export {type Warehouse};

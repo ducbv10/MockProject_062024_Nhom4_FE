@@ -44,7 +44,7 @@ const PresidingAuction: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="flex-1 h-[580px] px-[1%] space-y-10">
       <h1 className="text-[20px] font-bold">Presiding Auction</h1>
       <Table
         columns={columns}

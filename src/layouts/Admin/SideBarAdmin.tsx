@@ -9,12 +9,13 @@ import { CiSquareQuestion, CiLogout } from "react-icons/ci";
 import { ContainerOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { ConfigProvider, Menu } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ManageProduct from '@/pages/Admin/ManageProduct';
 import PresidingAuction from '@/pages/Admin/PresidingAuction';
 import ManageAuction from '@/pages/Admin/ManageAuction';
 import ManageWarehouse from '@/pages/Admin/ManageWarehouse';
 import ManageNews from '@/pages/Admin/ManageNews';
+import Dashboard from '@/pages/Admin/Dashboad/Dashboard';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
@@ -46,21 +47,25 @@ const theme = {
 };
 function SidebarAdmin() {
   const navigate = useNavigate()
-  const [isShow, setIsShow] = useState(false)
-  const [isKey, setIsKey] = useState('')
+  const [isShow, setIsShow] = useState(true)
+  const [isKey, setIsKey] = useState('10')
+
+  console.log(isShow)
+  console.log(isKey)
+  useEffect(() => {
+        navigate('')
+  }, [10])
   const handleSelect: MenuProps['onSelect'] = ({ key }) => {
-    if(isShow){
+    if(key==='10'){
       setIsShow(true)
+      setIsKey(key)
+    }else{  
+      setIsShow(false)
       setIsKey(key)
     }
-    else{
-      setIsShow(true)
-      setIsKey(key)
-    } 
-   
     switch (key) {
       case '1':
-        navigate('manager-user')
+        navigate('manager-list-user')
         break;
       case '2':
         navigate('manager-category')
@@ -84,7 +89,10 @@ function SidebarAdmin() {
         navigate('customer-request')
         break;
       case '9':
-        navigate('logout')
+        navigate('/signin')
+        break;
+      case '10':
+        navigate('')
         break;
       case '10':
         navigate('/admin')
@@ -94,9 +102,9 @@ function SidebarAdmin() {
     return (
       <>
           <ConfigProvider theme={theme}>
-          <div style={{ width: 256, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ width: 256, height:170, display: 'flex', flexDirection: 'column' }}>
           <Menu
-            defaultSelectedKeys={['']}
+            defaultSelectedKeys={[isKey]}
             mode="inline"
             inlineIndent={50}
             theme="light"
@@ -107,6 +115,7 @@ function SidebarAdmin() {
            
           />
           <div className='m-auto w-[200px] h-[2px] bg-gray-600 '>
+            ----------------
           </div>
           <Menu
             defaultSelectedKeys={['']}
@@ -118,17 +127,11 @@ function SidebarAdmin() {
           />
         </div>
       </ConfigProvider>
-      <div className='flex-1  mr-[50px]'>
-              {/* {isShow && (isKey==="1") && <ManageNews/>}
-              {isShow && (isKey==="2") && <ManageNews/>} */}
-              {isShow && (isKey==="3") && <ManageNews/>}
-              {isShow && (isKey==="4") && <ManageWarehouse/>}
-              {isShow && (isKey==="5") && <ManageAuction/>}
-              {isShow && (isKey==="6") && <ManageProduct/>}
-              {isShow && (isKey==="7") && <PresidingAuction/>}
-              {/* {isShow && (isKey==="8") && <customer-request/>} */}
-              {isShow && (isKey==="9") && <PresidingAuction/>}
-      </div>
+      {(isShow && isKey=='10') ? (
+      <div className='flex-1 w-5/6' >
+                <Dashboard/>
+      </div>)  : (<></>)
+      }
       </>
     );
   }

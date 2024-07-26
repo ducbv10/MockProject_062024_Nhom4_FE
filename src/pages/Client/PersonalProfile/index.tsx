@@ -9,7 +9,6 @@ const PersonalProfile = () => {
   const [isSeller, setIsSeller] = useState(true)
   return (
     <div>
-      <Header />
       <div className="my-4">
         <UserNavbar />
       </div>
@@ -18,7 +17,6 @@ const PersonalProfile = () => {
       ) : (
         <CustomerPersonalProfile />
       )}
-      <Footer />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaBell, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import { Modal } from 'antd';
+import { Button, Modal } from 'antd';
 import LoginForm from '@/layouts/Auth/Login';
 import 'tailwindcss/tailwind.css';
 import { Link } from 'react-router-dom';
@@ -22,6 +22,11 @@ const Header: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  const login = localStorage.getItem("login");
+  const signOut = () => {
+    localStorage.removeItem("login");
+    window.location.reload();
+  }
 
   return (
     <header className="flex justify-between items-center p-6 bg-red-800 text-white h-24">
@@ -62,7 +67,6 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-2">
           <FaUser />
           <span className="ml-2">
-            <button onClick={showModal}>Sign In</button>
             <Modal
               visible={isModalOpen}
               onCancel={handleCancel}
@@ -71,6 +75,9 @@ const Header: React.FC = () => {
             >
               <LoginForm />
             </Modal>
+            {login ? (
+              <button onClick={signOut}>Sign Out</button>
+            ) : <button onClick={showModal}>Sign In</button>}
           </span>
         </div>
       </div>

@@ -1,6 +1,12 @@
-import { useState } from "react";
-import { Button, Col, Form, Input, Row, Select } from "antd";
+import { useEffect, useState } from "react";
+import { Button, Col, Form, Input, InputNumber, message, Row, Select } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { number } from "yup";
+import Item from "antd/es/list/Item";
+import axios from "axios";
+import { error } from "console";
+import request from "@/utils/request";
+import { createUserPayload } from "@/types/User";
 const { Option } = Select;
 
 // const formItemLayout = {
@@ -33,22 +39,85 @@ const closerIcon = './src/assets/images/closerIcon.png'
 
 function Register() {
   const [form] = Form.useForm();
+  const [opacity, setOpacity] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
+
+  // Save state value of selectBankName
+  const [selectBank, setSelectBank] = useState(null)
+  const handleChangeBank = (value:any) => {
+        setSelectBank(value)
+  }
+  const bankNameValue = [
+    {id:"1",
+     name:[
+      {
+      nameBank:"Montgomery, AL - Regions Bank",
+      branch: ["Regions Bank - Montgomery Main Branch"]
+      }
+    ],
+  },
+    {id:"2",
+      name:[
+        {
+        nameBank:"Anchorage, AK - Alaska USA Federal Credit Union",
+        branch: [" Alaska USA Federal Credit Union - Anchorage Downtown Branch"]
+        }
+      ],
+    },
+    {
+      id:"3",
+      name:[
+        {
+        nameBank:"Phoenix, AZ - Bank of America",
+        branch: ["Bank of America - Phoenix Central Avenue Branch"]
+        }
+      ],
+    },
+    {id:"4",
+      name:[
+        {
+        nameBank:"Little Rock, AR - Bank of the Ozarks",
+        branch: ["Bank of the Ozarks - Little Rock Midtown Branch"]
+        }
+      ],
+    },
+  ]
+  const branches = selectBank ? bankNameValue.find( item => item.name[0].nameBank === selectBank)?.name[0].branch : []
+ 
+
   const navigate = useNavigate();
   const handleClose = () => {
     setIsOpen(false);
     navigate('/');
-    // Xử lý hành động đóng modal ở đây (nếu cần)
   };
-  const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
+  const onFinish = (values: createUserPayload[]) => {
+    const fetchAuction = async () => {
+      console.log(values);
+    try {
+      await request({
+        method: 'post',
+        serverType: 'node',
+        apiEndpoint: 'v1/user/register',
+        data: values,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  fetchAuction();
+  };
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setOpacity(100), 10);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
       {isOpen && (
-        <div className="flex flex-col items-center ms:w-screen min-h-screen md:w-full bg-white bg-opacity-90 z-0 ">
-          <div className="w-full max-w-2xl lg:max-w-[760px] lg:w-full  md:max-h-max md:mx-4 md:max-w-[800px] md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-gray-50 lg:rounded-2xl md:rounded-2xl sm:rounded-none shadow-lg">
+        <div className="flex flex-col items-center ms:w-screen min-h-screen md:w-full bg-black z-0  bg-[url('https://img.freepik.com/premium-vector/people-auction-art-flat-poster_275655-2065.jpg?size=626&ext=jpg&ga=GA1.1.1270318471.1721545716&semt=sph')]  bg-opacity-50 ">
+          <div className={`w-full max-w-2xl lg:max-w-[760px] lg:w-full  md:max-h-max md:mx-4 md:max-w-[800px] md:w-full sm:max-h-max sm:mx-4 sm:w-full lg:h-full bod sm:my-1  items-center z-50 bg-white lg:rounded-2xl md:rounded-2xl sm:rounded-none shadow-lg opacity-${opacity} transition-opacity duration-1000 ease-in-out`}>
             <div className="px-4 py-2 md:w-full">
               <div className=" h-fit flex flex-row-reverse">
                 <button onClick={handleClose} className="w-[45px] h-auto">
@@ -86,8 +155,8 @@ function Register() {
                     {/* Email */}
                     <Col lg={8} xs={24} md={12} >
                       <Form.Item
-                        name="email"
-                        label="Username/Email"
+                        name= "email"
+                        label="Email"
                         rules={[
                           {
                             type: "email",
@@ -107,7 +176,7 @@ function Register() {
                     {/* Firstname */}
                     <Col lg={8} xs={24} md={12} >
                       <Form.Item
-                        name="firstname"
+                        name="userName"
                         label="Firstname"
                         // tooltip="What do you want others to call you?"
                         rules={[
@@ -145,26 +214,26 @@ function Register() {
                     {/* Country  row 2*/}
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="country"
-                        label="Country"
+                        name="zipCodeId"
+                        label="Zip Code Id"
                         // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
-                            message: "Please input your country!",
+                            message: "Please input your Zip Code Id!",
                             whitespace: true,
                           },
                         ]}
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                       >
-                        <Input placeholder="Country" />
+                        <Input placeholder="Zip Code Id" />
                       </Form.Item>
                     </Col>
                     {/* State/Province  row 2*/}
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="State/Province"
+                        name="State"
                         label="State/Province"
                         rules={[
                           {
@@ -200,7 +269,7 @@ function Register() {
 
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="bankname"
+                        name="bankName"
                         label="Bank Name"
                         rules={[
                           {
@@ -211,10 +280,15 @@ function Register() {
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                       >
-                        <Select placeholder="select your Bank Name">
-                          <Option value="male">Male</Option>
-                          <Option value="female">Female</Option>
-                          <Option value="other">Other</Option>
+                        <Select onChange={handleChangeBank} placeholder="select your Bank Name">
+                          {
+                            bankNameValue.map((item) => (
+                              item.name.map((nameItem)=> (
+                                <Option key={item.id} value={nameItem.nameBank}>{nameItem.nameBank}</Option>
+                              ))
+                            ))
+                          }
+                  
                         </Select>
                       </Form.Item>
                     </Col>
@@ -222,32 +296,40 @@ function Register() {
                     {/* Banknumber row 3*/}
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="banknumber"
+                        name="bankNum"
                         label="Bank Number"
                         // tooltip="What do you want others to call you?"
                         rules={[
                           {
                             required: true,
                             message: "Please input your bank number!",
-                            whitespace: true,
                           },
-                          {
-                            type: "number",
-                            message: "Please input your bank number by number!",
-                            whitespace: true,
+
+                          { //IsNaN (not a number)
+                            //validator is an attribute in Ant Design's testing rules. This property receives a function to perform a custom check.
+                            validator: (_, value) => {
+                              if (value && isNaN(value) ) {
+                                return Promise.reject("Please input a valid number!");
+                              }
+                              //// Check if the input value contains leading spaces
+                              if(/^\s/.test(value)){
+                                return Promise.reject("Value should not start with whitespace!");
+                              }
+                              return Promise.resolve();
                           },
+                        }
                         ]}
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                       >
-                        <Input placeholder="Bank Number" />
+                        <Input type="text" className="h-[32.5px]" placeholder="Bank Number" />
                       </Form.Item>
                     </Col>
 
                     {/* Bankbranch row 3*/}
                     <Col lg={8} xs={24} md={12}>
                       <Form.Item
-                        name="bankbranch"
+                        name="bankBranch"
                         label="Bank Branch"
                         rules={[
                           {
@@ -258,10 +340,13 @@ function Register() {
                         labelCol={{ span: 24 }}
                         wrapperCol={{ span: 24 }}
                       >
-                        <Select placeholder="select your Bank Branch">
-                          <Option value="male">Male</Option>
-                          <Option value="female">Female</Option>
-                          <Option value="other">Other</Option>
+                        <Select  placeholder="select your Bank Branch">
+                            {/* <Option value="test1">tes1</Option> */}
+                            {
+                                branches?.map((branch, index)=>(
+                                  <Option key={index} value={branch}>{branch}</Option>
+                                ))
+                          }
                         </Select>
                       </Form.Item>
                     </Col>
